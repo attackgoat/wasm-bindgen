@@ -72,6 +72,7 @@ fn parse(webidl_source: &str, allowed_types: Option<&[&str]>) -> Result<Program>
                 weedle::Err::Error(cx) | weedle::Err::Failure(cx) => {
                     let remaining = match cx {
                         weedle::Context::Code(remaining, _) => remaining,
+                        _ => unimplemented!(),
                     };
                     let pos = webidl_source.len() - remaining.len();
                     format_err!("failed to parse WebIDL")
